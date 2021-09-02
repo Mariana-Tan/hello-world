@@ -223,41 +223,32 @@ browseVignettes("ggplot2")
 
 ### 2.5.1 Create a new project
 
-<img src="/Users/tanshiyin/Library/Application Support/typora-user-images/image-20210831152213814.png" alt="image-20210831152213814" style="zoom:40%;" />
-
-<img src="/Users/tanshiyin/Library/Application Support/typora-user-images/image-20210831152304267.png" alt="image-20210831152304267" style="zoom:40%;" />
-
-<img src="/Users/tanshiyin/Library/Application Support/typora-user-images/image-20210831152335425.png" alt="image-20210831152335425" style="zoom:40%;" />
-
-<img src="/Users/tanshiyin/Library/Application Support/typora-user-images/image-20210831152434151.png" alt="image-20210831152434151" style="zoom:40%;" />
+- **File** > **New Project...** > **New Directory** > **New Project** > enter Directory name and choose a location > **Create Project**
 
 ### 2.5.2 Open and Close a project
 
 - Open * 3
 
-<img src="/Users/tanshiyin/Library/Application Support/typora-user-images/image-20210831153034810.png" alt="image-20210831153034810" style="zoom:40%;" />
+  1. Click the **.Rproj** file
 
-<img src="/Users/tanshiyin/Library/Application Support/typora-user-images/image-20210831152855016.png" alt="image-20210831152855016" style="zoom:40%;" />
+  2. **File** > **Open Project...**
 
-<img src="/Users/tanshiyin/Library/Application Support/typora-user-images/image-20210831152923117.png" alt="image-20210831152923117" style="zoom:40%;" />
+  3. The drop-down list in up-right corner > **Open Project...**
 
 - Close * 3
 
-<img src="/Users/tanshiyin/Library/Application Support/typora-user-images/image-20210831153121612.png" alt="image-20210831153121612" style="zoom:40%;" />
+  1. **Exit** RStudio
 
-<img src="/Users/tanshiyin/Library/Application Support/typora-user-images/image-20210831153416273.png" alt="image-20210831153416273" style="zoom:40%;" />
+  2. **File** > **Close Project**
 
-<img src="/Users/tanshiyin/Library/Application Support/typora-user-images/image-20210831153436145.png" alt="image-20210831153436145" style="zoom:40%;" />
+  3. The drop-down list in up-right corner > **Close Project**
 
 - Switch projects / Multiple projects open at once
-
-  <img src="/Users/tanshiyin/Library/Application Support/typora-user-images/image-20210831153540996.png" alt="image-20210831153540996" style="zoom:40%;" />
+- The drop-down list in up-right corner > **Open Project in New Session...**
 
 ### 2.5.3 Setup folders in projects
 
 <img src="/Users/tanshiyin/Library/Application Support/typora-user-images/image-20210831151814006.png" alt="image-20210831151814006" style="zoom:40%;" />
-
-
 
 # Week 3: Version Control and GitHub
 
@@ -307,7 +298,7 @@ browseVignettes("ggplot2")
 
 - [官网](https://git-scm.com/download/mac)给出的`brew install git`运行出错，查到了下载安装包的[网址](https://www.atlassian.com/git/tutorials/install-git)
 
-  ```bash
+  ```
   $ git config --global user.name "Tan Shiyin"
   $ git config --global user.email tanshiyin11@yeah.net
   $ git config --list
@@ -321,11 +312,86 @@ browseVignettes("ggplot2")
 
 ## 3.3 Linking GitHub and RStudio
 
+### Step 1: Create & View [SSH](https://en.wikipedia.org/wiki/Secure_Shell) [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) Key in RStudio
 
+RStudio: 
+
+- **Tools** > **Global Options** > **Git/SVN** (> Browse... and verify Git executable) > **Create RSA Key...**
+
+- **Tools** > **Global Options** > **Git/SVN**  > **View public key** > copy your key
+
+  - My Public Key
+
+    ```
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCrMSFY7aVdzmYE/2V3IHYB1bIxd1wpKkbAabFn4Skxek/gumUv9wjW0V3Ww1nlg2PSuAnqWzzLAR4dwrDUugqiMROea5HbViB1M0ZF0k2uUxXITwE5TRmAIvy/cVv7zuLtXwZe8/AJnYcZdfCIrvSYVXq3sz7bG7FX2Nh+m3GnAzfjgm9zC61wHqRp1vk/a6lStMgDuu0rBUf8jDWWdibKBZ6oL9tZsTErQFH3P7sWFp/zCv9uysL6yLFXCEb4IZTsk6N34WQv3cfqhSPYtt3HsMgiOdOWWmmN9jKr/+lj+HqOxYkyIPzIo7Eh0EuuzJEIQUZDMC3ksT6/B1E/roK1 tanshiyin@tanshiyindeMacBook-Pro.local
+    ```
+
+### Step 2: Add SSH key to GitHub
+
+GitHub:  
+
+- **Settings** > **SSH and GPG keys** > **New SSH key** > paste your key and give a title > **Add SSH key**
+
+### Step 3: Create a new repository in GitHub
+
+### Step 4: Create your personal access token in GitHub
+
+GitHub:
+
+- **Settings** > **Developer Settings** > **Personal Access Token** > **Generate New Token** > fill up the form > **Generate token** > copy your token (<u>Make sure to copy your personal access token now. You won’t be able to see it again!</u>)
+
+  - My token
+
+    ```
+    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
+    ```
+
+### Step 5: Link GitHub repository to RStudio
+
+GitHub: 
+
+- Copy the **URL** for your new repository (e.g. https://github.com/Mariana-Tan/testing-RStudio)
+
+RStudio:
+
+- Create a new R project: **File** > **New Project** > **Version Control** > **Git** > paste **Repository URL**, name your project and choose its directory > **Create Project**
+- Create a new R script: **File** > **New File** > **R Script** > coding > save it
+- Push R script to GitHub: **Git** in the environment quadrant > click the checkbox under **Stage** for your R script > **Commit** > write commit message > **Commit**  > **Push** > enter your **GitHub username** and GitHub password (paste your **personal aceess token** generated in GitHub)
 
 ## 3.4 Projects Under Version Control
 
+### 3.4.1 Linking an existing R Project with Version Control
 
+#### Step 1: Set up a R Project without Version Control
+
+(see 2.5.1 for details)
+
+#### Step 2: Link R Project with Git
+
+Terminal:
+
+```bash
+$ cd Desktop/Coursera/Testing/	# go to your local R Project
+$ ls	# list your files and check
+Data		Output		Scripts		Testing.R	Testing.Rproj
+$ git init	# command #1
+Initialized empty Git repository in /Users/tanshiyin/Dropbox/Mac/Desktop/Coursera/Testing/.git/
+$ git add .	# command #2
+$ git commit -m "Initial Commit" # command #3
+[master (root-commit) 9ab0602] Initial Commit
+ 2 files changed, 14 insertions(+)
+ create mode 100644 Testing.R
+ create mode 100644 Testing.Rproj
+
+```
+
+#### Step 3: Link R Project with GitHub
+
+
+
+
+
+### 3.4.2 Clone an GitHub Project from others to local R Studio
 
 
 
